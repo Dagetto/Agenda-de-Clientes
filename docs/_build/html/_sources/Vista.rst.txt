@@ -1,0 +1,112 @@
+Módulo Vista 
+============
+
+:synopsis: El módulo denomiado *Vista* ejecuta la interfaz gráfica de nuestra app. Se compone de entry's, botones que ejecutan el ABMC mediante función lambda, y el treeview que permite visualizar la información.
+
+Seccion inicial: Tkinter y Modelo
+---------------------------------
+
+.. note::
+   **from Modelo import Abmc** 
+.. note::
+   **from tkinter import Menu**
+.. note::
+   **from tkinter import ttk**
+.. note::
+   **from tkinter import StringVar**
+.. note::
+   **from tkinter import Label**
+.. note::
+   **from tkinter import Entry**
+.. note::
+   **from tkinter import W**
+.. note::
+   **from tkinter import HORIZONTAL** 
+.. note::
+   **from tkinter import VERTICAL**
+.. note::
+   **from tkinter import Button**
+.. note::
+   **from tkinter import NS**
+.. note::
+   **from tkinter import EW**
+
+Modelado de la interfaz gráfica Tkinter 
+---------------------------------------
+
+.. py:class:: VistaPoo
+
+   .. py:method:: __init__(ventana_interfaz)
+
+      :param  ventana_interfaz: se refiere con el *main* y será la variable que definirá la Ventana principal de nuestra app con todos sus elementos.
+
+   .. note:: 
+      **main = ventana_interfaz**
+
+   **objeto2_basedatos = Abmc()** # Objeto que refiere al ABMC del Módulo Modelo.
+
+   **main.title("PyNotes")** # Título de la APP
+
+   **main.config(bg="#FFF7DD")** # Color de la APP
+
+   **var_id = StringVar()** # Indicamos las variables y tipos de datos que recibirán. Las mismas se encuentran por detrás de los entrys que visualiza el usuario. 
+
+
+Modelado de la interfaz gráfica Tkinter - Labels, Entrys, Treeview
+-------------------------------------------------------------------
+
+.. note::
+   Labels
+
+**titulo = Label(main, text="Nombre")** 
+
+**titulo.grid(row=1, column=0, sticky=W)** # Indicamos cada uno de los Labels, su posición en la interfaz, y el texto asociado
+
+
+.. note::
+   Entrys
+
+**entry_nombre = Entry(main, textvariable=self.var_nombre, width=50)** 
+
+**entry_nombre.grid(row=1, column=1)** # Indicamos los Entrys y su posición 
+
+.. note::
+   Treeview
+
+**tree = ttk.Treeview(main)** # Generamos el Treeview.
+
+**tree["columns"] = ("col1","col2","col3",)** # Indicamos cuantas columnas debe poseer el Treeview.
+
+**tree.column("#0", width=20, minwidth=50, anchor=W)**
+
+**tree.heading("#0", text="ID")**  # Asignamos el temaño de todas las columnas seguido del texto que las acompaña.
+
+**tree.grid(column=0, row=12, columnspan=5)** # Determinamos el tamaño total del Treeview
+
+
+Modelado de la interfaz gráfica Tkinter - Botones y función Lambda
+-------------------------------------------------------------------
+
+:synopsis: La App contiene 4 botones que ejecutan el ABMC mediante función lambda referenciando al objeto que contiene la clase ABMC y el correspondiente método que el usuario desea ejecutar.
+
+.. note::
+
+   **boton_cliente = Button(main, text="CLIENTES", padx=73, pady=1, command=lambda: objeto2_basedatos.funcion_consulta_general(tree),)**
+
+   **Main** # Hace referencia a su posición dentro de la ventana principal.
+
+   **Text** # Indica el nombre/texto que del botón.
+
+   **padx - padxy** # Su ubicación dentro de la App.
+
+   **Command = lambda: objeto2_basedatos.funcion_consulta_general(tree)** # Aplica una función lambda en donde se refiere el objeto que contiene el ABMC y el método especifíco.
+
+
+
+boton_cliente.grid(row=1, column=4)
+
+
+.. automodule:: Vista
+   :members:
+   :undoc-members:
+   :show-inheritance:
