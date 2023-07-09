@@ -1,1 +1,2 @@
-This app ´User Calendar´ was made usign Python 3, Tkinter, Peewee, Sqlite, and Sphinx. The main purpose was to show how to handle a CRUD using Sqlite and Peewee ORM.
+This app ´User Calendar´ was made usign Python 3, MVC Pattern, Tkinter, Peewee, Sqlite, and Sphinx. The main purpose was to show how to handle a CRUD using Sqlite and Peewee ORM, make a functional interface with Tkinter, and made all the documentation project with Sphinx.
+Of course all the code was made in spanish because its my mother lenguage but i think that it´s very easy to understand the code
