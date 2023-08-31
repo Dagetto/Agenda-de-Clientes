@@ -1,5 +1,4 @@
-from Modelo import Abmc
-from tkinter import Menu
+from modelo import Abmc
 from tkinter import ttk
 from tkinter import StringVar
 from tkinter import Label
@@ -78,10 +77,18 @@ class VistaPoo:
         self.titulo = Label(self.main, text="")
         self.titulo.grid(row=10, column=0, sticky=W)
 
-        self.entry_nombre = Entry(self.main, textvariable=self.var_nombre, width=50)
+        self.entry_nombre = Entry(
+            self.main,
+            textvariable=self.var_nombre,
+            width=50
+            )
         self.entry_nombre.grid(row=1, column=1)
 
-        self.entry_apellido = Entry(self.main, textvariable=self.var_apellido, width=50)
+        self.entry_apellido = Entry(
+            self.main,
+            textvariable=self.var_apellido,
+            width=50
+            )
         self.entry_apellido.grid(row=2, column=1)
 
         self.entry_dni = Entry(self.main, textvariable=self.var_dni, width=50)
@@ -92,19 +99,34 @@ class VistaPoo:
         )
         self.entry_direccion.grid(row=4, column=1)
 
-        self.entry_pais = Entry(self.main, textvariable=self.var_pais, width=50)
+        self.entry_pais = Entry(
+            self.main,
+            textvariable=self.var_pais, width=50
+            )
         self.entry_pais.grid(row=5, column=1)
 
-        self.entry_ciudad = Entry(self.main, textvariable=self.var_ciudad, width=50)
+        self.entry_ciudad = Entry(
+            self.main,
+            textvariable=self.var_ciudad,
+            width=50
+            )
         self.entry_ciudad.grid(row=6, column=1)
 
         self.entry_cp = Entry(self.main, textvariable=self.var_cp, width=50)
         self.entry_cp.grid(row=7, column=1)
 
-        self.entry_telefono = Entry(self.main, textvariable=self.var_telefono, width=50)
+        self.entry_telefono = Entry(
+            self.main,
+            textvariable=self.var_telefono,
+            width=50
+            )
         self.entry_telefono.grid(row=8, column=1)
 
-        self.entry_email = Entry(self.main, textvariable=self.var_email, width=50)
+        self.entry_email = Entry(
+            self.main,
+            textvariable=self.var_email,
+            width=50
+            )
         self.entry_email.grid(row=9, column=1)
 
         self.tree = ttk.Treeview(self.main)
@@ -142,7 +164,11 @@ class VistaPoo:
         self.tree.heading("col9", text="Email")
         self.tree.grid(column=0, row=12, columnspan=5)
 
-        scrollbar_v = ttk.Scrollbar(self.main, orient=VERTICAL, command=self.tree.yview)
+        scrollbar_v = ttk.Scrollbar(
+            self.main,
+            orient=VERTICAL,
+            command=self.tree.yview
+            )
         scrollbar_v.grid(row=12, column=6, sticky=NS)
         self.tree.configure(yscrollcommand=scrollbar_v.set)
 
@@ -152,14 +178,16 @@ class VistaPoo:
         scrollbar_h.grid(row=13, column=0, columnspan=25, sticky=EW)
         self.tree.configure(xscrollcommand=scrollbar_h.set)
 
-        # ################BOTONES#################
+# ###############BOTONES######################
 
         boton_cliente = Button(
             self.main,
             text="CLIENTES",
             padx=73,
             pady=1,
-            command=lambda: self.objeto2_basedatos.funcion_consulta_general(self.tree),
+            command=lambda: self.objeto2_basedatos.funcion_consulta_general(
+                self.tree
+                ),
         )
         boton_cliente.grid(row=1, column=4)
 
@@ -168,19 +196,8 @@ class VistaPoo:
             text="ALTA DE USUARIO",
             padx=50,
             pady=1,
-            command=lambda: self.objeto2_basedatos.funcion_alta_usuarios(
-                self.var_nombre,
-                self.var_apellido,
-                self.var_dni,
-                self.var_direccion,
-                self.var_pais,
-                self.var_ciudad,
-                self.var_cp,
-                self.var_telefono,
-                self.var_email,
-                self.tree,
-            ),
-        )
+            command=lambda: self.alta())
+
         boton_alta.grid(row=4, column=4)
 
         boton_baja = Button(
@@ -199,7 +216,13 @@ class VistaPoo:
             text="ACTUALIZAR DATOS",
             padx=45,
             pady=1,
-            command=lambda: self.objeto2_basedatos.funcion_actualizar_usuarios(
+            command=lambda: self.modificar()
+            )
+        boton_actualizar.grid(row=8, column=4)
+#######################################################
+
+    def alta(self,):
+        self.objeto2_basedatos.funcion_alta_usuarios(
                 self.var_nombre,
                 self.var_apellido,
                 self.var_dni,
@@ -210,8 +233,20 @@ class VistaPoo:
                 self.var_telefono,
                 self.var_email,
                 self.tree,
-            ),
-        )
-        boton_actualizar.grid(row=8, column=4)
+                )
 
-        #######################################################
+#######################################################
+
+    def modificar(self,):
+        self.objeto2_basedatos.funcion_actualizar_usuarios(
+                self.var_nombre,
+                self.var_apellido,
+                self.var_dni,
+                self.var_direccion,
+                self.var_pais,
+                self.var_ciudad,
+                self.var_cp,
+                self.var_telefono,
+                self.var_email,
+                self.tree,
+                )
