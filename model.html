@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model Module &mdash; Users Agenda 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="view Module" href="view.html" />
+    <link rel="prev" title="controller Module" href="controller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Users Agenda
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="controller.html">controller Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">model Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initial-section-database-and-orm">Initial Section: Database and ORM.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#global-variables">Global Variables:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creation-connection-of-the-database-and-tables">Creation/Connection of the Database and Tables.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#BaseModel"><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#BaseModel.Meta"><code class="docutils literal notranslate"><span class="pre">BaseModel.Meta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Usuarios"><code class="docutils literal notranslate"><span class="pre">Usuarios</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#abmc-sujeto-crud-class">ABMC(Sujeto) CRUD class.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Abmc"><code class="docutils literal notranslate"><span class="pre">Abmc</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Abmc.print"><code class="docutils literal notranslate"><span class="pre">Abmc.print()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#abmc-create-method">ABMC (Create method)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#funcion_alta_usuarios"><code class="docutils literal notranslate"><span class="pre">funcion_alta_usuarios()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#abmc-delete-method">ABMC (Delete method)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#abmc-update-method">ABMC (Update method)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#funcion_actualizar_usuarios"><code class="docutils literal notranslate"><span class="pre">funcion_actualizar_usuarios()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#abmc-read-method">ABMC (Read method)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#funcion_consulta_general"><code class="docutils literal notranslate"><span class="pre">funcion_consulta_general()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">view Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="observer.html">observer Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Users Agenda</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">model Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="model-module">
+<h1>model Module<a class="headerlink" href="#model-module" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The module named <em>model</em> is responsible for managing the database connection, exception handling, and the CRUD operations of our User Agenda app.</p>
+</dd>
+</dl>
+<section id="initial-section-database-and-orm">
+<h2>Initial Section: Database and ORM.<a class="headerlink" href="#initial-section-database-and-orm" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>import re</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from peewee import</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from peewee import SqliteDatabase</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from peewee import Model</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from peewee import CharField</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from datetime import datetime</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import messagebox</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from observer import Sujeto</strong></p>
+</div>
+</section>
+<section id="global-variables">
+<h2>Global Variables:<a class="headerlink" href="#global-variables" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>db = SqliteDatabase(“base_prueba.db”)</strong> # Name of our Database</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>db.connect()</strong> # Database Connector.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>db.create_tables([Usuarios])</strong> # Creation of the ‘Usuarios’ Table within our Database.</p>
+</div>
+</section>
+<section id="creation-connection-of-the-database-and-tables">
+<h2>Creation/Connection of the Database and Tables.<a class="headerlink" href="#creation-connection-of-the-database-and-tables" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will use Peewee to facilitate our interaction with the database.
+Essentially, up to line 43, we specify the name of our database and
+the creation of a table with its respective columns and field values.
+Please check out the Peewee documentation.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="BaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#BaseModel" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="BaseModel.Meta">
+<span class="sig-name descname"><span class="pre">Meta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#BaseModel.Meta" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="Usuarios">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Usuarios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">BaseModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Usuarios" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">nombre</span> <span class="pre">=</span> <span class="pre">CharField(unique=True)</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">apellido</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">dni</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">direccion</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">pais</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ciudad</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cp</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">telefono</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">email</span> <span class="pre">=</span> <span class="pre">CharField()</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="abmc-sujeto-crud-class">
+<h2>ABMC(Sujeto) CRUD class.<a class="headerlink" href="#abmc-sujeto-crud-class" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="Abmc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Abmc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sujeto</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Abmc" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">def</span> <span class="pre">__init__(self,):</span></span></dt>
+<dt class="sig sig-object py" id="Abmc.print">
+<span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">'inside</span> <span class="pre">CRUD</span> <span class="pre">class'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Abmc.print" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="abmc-create-method">
+<h2>ABMC (Create method)<a class="headerlink" href="#abmc-create-method" title="Link to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>We create the instance method and the parameters it will take to perform the registration. In the method, we add the regex and exception handling, as well as the variable usuarios, which indicates the name of the table where the data insertion should occur.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcion_alta_usuarios">
+<span class="sig-name descname"><span class="pre">funcion_alta_usuarios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apellido</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direccion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pais</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ciudad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">telefono</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcion_alta_usuarios" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<p>We define a variable that points to our ‘usuarios’ (users) table. Where the data will be added .</p>
+<blockquote>
+<div><p><strong>usuarios = (Usuarios())</strong></p>
+</div></blockquote>
+<p>The variables that store the data entered by the user will be determined as follows:</p>
+<blockquote>
+<div><p><strong>usuarios.nombre = var_nombre.get()</strong></p>
+</div></blockquote>
+<p>Regex of the email field <strong>usuarios.email_regex = r”b[A-Za-z0-9._%+-]+&#64;[A-Za-z0-9.-]+.[A-Z|a-z]{2,}b”</strong></p>
+<blockquote>
+<div><dl class="simple">
+<dt>if re.match(regex, usuarios.email):  # little if/else to check regex</dt><dd><p>usuarios.save()  # if this it’s true the data will be added and saved in our database.
+self.funcion_consulta_general(tree)  # We call the ‘funcion_consulta_general’ (read attribute) to update the user interface tree.
+self.notificar(nombre.get(), apellido.get(), email.get())  # We invoke the ‘notify’ method of the ‘Sujeto’ (subject) class to return certain obtained parameters. We could request any element, but for this case, it will be enough to obtain the name, last name, and email of the entered user.
+nombre.set(“”)
+apellido.set(“”)
+dni.set(“”)
+direccion.set(“”)  # Cleaning fields of the interface
+ciudad.set(“”)
+pais.set(“”)
+cp.set(“”)
+telefono.set(“”)
+email.set(“”)
+messagebox.showinfo(“User registration successful.”,”The user has been successfully added to the database.”)</p>
+</dd>
+<dt>else:</dt><dd><p>messagebox.showerror(“Validation error.”, “The entered email address is not valid.”)
+raise Exception(“Validation error.”)  # Something went wrong, time to check the entered data.
+return</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="abmc-delete-method">
+<h2>ABMC (Delete method)<a class="headerlink" href="#abmc-delete-method" title="Link to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The following method (read attribute) will fetch all the data from our ‘usuarios’ (User) table to display it in the user interface tree..</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">funcion_baja_usuarios(var_id,</span> <span class="pre">tree):</span></span></dt>
+<dd><p><strong>seleccion_usuario = tree.focus()</strong>  # Selection of the row</p>
+<p><strong>usuarios_id = tree.item(seleccion_usuario)</strong> # When selecting with the cursor, we are indicating that it should take its ID.</p>
+<p><strong>borrar = Usuarios.get(Usuarios.id == usuarios_id[“text”])</strong> # We will delete the selected row with the obtained ID.</p>
+<p><strong>borrar.delete_instance()</strong> # We execute the deletion of the row from our table and database with a commit.</p>
+</dd></dl>
+
+</section>
+<section id="abmc-update-method">
+<h2>ABMC (Update method)<a class="headerlink" href="#abmc-update-method" title="Link to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The ‘funcion_actualizar_usuarios’ method (update method) follows the logic of the previous method, selecting with the cursor a user whose data we wish to update.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcion_actualizar_usuarios">
+<span class="sig-name descname"><span class="pre">funcion_actualizar_usuarios</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apellido</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dni</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direccion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pais</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ciudad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">telefono</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcion_actualizar_usuarios" title="Link to this definition"></a></dt>
+<dd><p><strong>seleccion_usuario = tree.focus()</strong>  # Used exactly the same way as the previous method</p>
+<p><strong>actualizar = Usuarios.update(nombre=var_nombre.get()).where(Usuarios.id == usuarios_id[“text”])</strong> # Update data where the cursor is positioned.</p>
+</dd></dl>
+
+</section>
+<section id="abmc-read-method">
+<h2>ABMC (Read method)<a class="headerlink" href="#abmc-read-method" title="Link to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The following method (read attribute) will fetch all the data from our ‘usuarios’ (User) table to display it in the user interface tree.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="funcion_consulta_general">
+<span class="sig-name descname"><span class="pre">funcion_consulta_general</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#funcion_consulta_general" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>registros = tree.get_children()</dt><dd><dl class="simple">
+<dt>for element in registros:</dt><dd><p>tree.delete(element)</p>
+</dd>
+<dt>for (fila) in Usuarios.select():</dt><dd><dl class="simple">
+<dt>tree.insert(</dt><dd><p>“”,
+0,
+text=fila.id,
+values=(fila.nombre,fila.apellido,fila.dni,fila.direccion,fila.pais,fila.ciudad,fila.cp,fila.telefono,fila.email,),)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="controller.html" class="btn btn-neutral float-left" title="controller Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="view.html" class="btn btn-neutral float-right" title="view Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lucas Monzon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
