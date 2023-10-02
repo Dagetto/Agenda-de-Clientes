@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>model &mdash; Users Agenda 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Users Agenda
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controller.html">controller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model.html">model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../view.html">view Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../observer.html">observer Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Users Agenda</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">model</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for model</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="n">SqliteDatabase</span>  <span class="c1"># we&#39;re using Peewee ORM. you can you check the documentation to understand what happens up to line 43</span>
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">peewee</span> <span class="kn">import</span> <span class="n">CharField</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">messagebox</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">observer</span> <span class="kn">import</span> <span class="n">Sujeto</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">We will use Peewee to facilitate our interaction with the database. </span>
+<span class="sd">Essentially, up to line 43, we specify the name of our database and </span>
+<span class="sd">the creation of a table with its respective columns and field values.</span>
+<span class="sd">Please check out the Peewee documentation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">SqliteDatabase</span><span class="p">(</span>
+    <span class="s2">&quot;base_prueba.db&quot;</span>
+<span class="p">)</span>  <span class="c1"># Name o the DB</span>
+
+
+<div class="viewcode-block" id="BaseModel">
+<a class="viewcode-back" href="../model.html#model.BaseModel">[docs]</a>
+<span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">database</span> <span class="o">=</span> <span class="n">db</span></div>
+
+
+
+<div class="viewcode-block" id="Usuarios">
+<a class="viewcode-back" href="../model.html#model.Usuarios">[docs]</a>
+<span class="k">class</span> <span class="nc">Usuarios</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">apellido</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">dni</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">direccion</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">pais</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">ciudad</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">cp</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">telefono</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">CharField</span><span class="p">()</span></div>
+
+
+<span class="c1"># We list all the fields that our database will have.</span>
+
+
+<span class="n">db</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>  <span class="c1"># DB connector</span>
+<span class="n">db</span><span class="o">.</span><span class="n">create_tables</span><span class="p">([</span><span class="n">Usuarios</span><span class="p">])</span>  <span class="c1"># Name of the Table</span>
+
+<span class="sd">&quot;&quot;&quot;Let&#39;s define three decorators to log CRUD information to a text file &quot;&quot;&quot;</span>
+<span class="c1"># &#39;Create attribute&#39; decorator for the CRUD methods</span>
+
+
+<div class="viewcode-block" id="decorador_alta">
+<a class="viewcode-back" href="../model.html#model.decorador_alta">[docs]</a>
+<span class="k">def</span> <span class="nf">decorador_alta</span><span class="p">(</span><span class="n">funcion</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">envoltura</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">funcion</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">registro</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;CRUD register.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;A new registration has been added.</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">)</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A new registration has been added.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">envoltura</span></div>
+
+
+<span class="c1"># &#39;Delete attribute&#39; decorator</span>
+
+
+<div class="viewcode-block" id="decorador_baja">
+<a class="viewcode-back" href="../model.html#model.decorador_baja">[docs]</a>
+<span class="k">def</span> <span class="nf">decorador_baja</span><span class="p">(</span><span class="n">funcion</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">envoltura</span><span class="p">(</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">funcion</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">registro</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;CRUD register.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;A deletion has been performed.</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">)</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A deletion has been performed.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">envoltura</span></div>
+
+
+<span class="c1"># &#39;Update attribute&#39; decorator</span>
+
+
+<div class="viewcode-block" id="decorador_modificacion">
+<a class="viewcode-back" href="../model.html#model.decorador_modificacion">[docs]</a>
+<span class="k">def</span> <span class="nf">decorador_modificacion</span><span class="p">(</span><span class="n">funcion</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">envoltura</span><span class="p">(</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">funcion</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">registro</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;CRUD register.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;A register modification has been made.</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">)</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">registro</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A register modification has been made.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">envoltura</span></div>
+
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The ABMC class contains all the CRUD functions.</span>
+<span class="sd">We will explain the &#39;function_alta_usuarios&#39; (Create)</span>
+<span class="sd">to understand how to retrieve user-entered data from the interface</span>
+<span class="sd">and save it in the created database.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Abmc">
+<a class="viewcode-back" href="../model.html#model.Abmc">[docs]</a>
+<span class="k">class</span> <span class="nc">Abmc</span><span class="p">(</span><span class="n">Sujeto</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;inside CRUD class&#39;</span><span class="p">)</span>
+
+    <span class="c1"># ######################## FUNCION ALTA USUARIOS #######################</span>
+
+<div class="viewcode-block" id="Abmc.funcion_alta_usuarios">
+<a class="viewcode-back" href="../model.html#model.Abmc.funcion_alta_usuarios">[docs]</a>
+    <span class="nd">@decorador_alta</span>
+    <span class="k">def</span> <span class="nf">funcion_alta_usuarios</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">nombre</span><span class="p">,</span>
+        <span class="n">apellido</span><span class="p">,</span>
+        <span class="n">dni</span><span class="p">,</span>
+        <span class="n">direccion</span><span class="p">,</span>
+        <span class="n">pais</span><span class="p">,</span>
+        <span class="n">ciudad</span><span class="p">,</span>
+        <span class="n">cp</span><span class="p">,</span>
+        <span class="n">telefono</span><span class="p">,</span>
+        <span class="n">email</span><span class="p">,</span>
+        <span class="n">tree</span><span class="p">,</span>
+    <span class="p">):</span>  <span class="c1"># we define our method &quot;funcion_alta_usuarios (create Attribute), and specify the parameters it will take to execute a user registration.&quot;</span>
+        <span class="n">usuarios</span> <span class="o">=</span> <span class="n">Usuarios</span><span class="p">()</span>  <span class="c1"># We define a variable that points to our &#39;usuarios&#39; (users) table. Where the data will be added .</span>
+
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">nombre</span> <span class="o">=</span> <span class="n">nombre</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">apellido</span> <span class="o">=</span> <span class="n">apellido</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">dni</span> <span class="o">=</span> <span class="n">dni</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">direccion</span> <span class="o">=</span> <span class="n">direccion</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># So, here we have our &#39;usuarios&#39; (users) variable pointing to our table and the &#39;direccion&#39; (address) column.</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">pais</span> <span class="o">=</span> <span class="n">pais</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>  <span class="c1"># The same applies to all columns. After assigning table+column, we use .get() to retrieve that information.</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">ciudad</span> <span class="o">=</span> <span class="n">ciudad</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">cp</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">telefono</span> <span class="o">=</span> <span class="n">telefono</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">usuarios</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">regex</span> <span class="o">=</span> <span class="s2">&quot;[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Z|a-z]&quot;</span>    <span class="c1"># Regex of the email field</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">usuarios</span><span class="o">.</span><span class="n">email</span><span class="p">):</span>  <span class="c1"># little if/else to check regex</span>
+            <span class="n">usuarios</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># if this it&#39;s true the data will be added and saved in our database.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">funcion_consulta_general</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>  <span class="c1"># We call the &#39;funcion_consulta_general&#39; (read attribute) to update the user interface tree.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notificar</span><span class="p">(</span><span class="n">nombre</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">apellido</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">email</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>  <span class="c1"># We invoke the &#39;notify&#39; method of the &#39;Sujeto&#39; (subject) class to return certain obtained parameters. We could request any element, but for this case, it will be enough to obtain the name, last name, and email of the entered user.</span>
+            <span class="n">nombre</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">apellido</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">dni</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">direccion</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># Cleaning fields of the interface</span>
+            <span class="n">ciudad</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">pais</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">telefono</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">email</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span>
+                <span class="s2">&quot;User registration successful.&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;The user has been successfully added to the database.&quot;</span><span class="p">,</span>
+            <span class="p">)</span>  <span class="c1"># success creating and saving a new record.</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span>
+                <span class="s2">&quot;Validation error.&quot;</span><span class="p">,</span> <span class="s2">&quot;The entered email address is not valid.&quot;</span>
+            <span class="p">)</span>  <span class="c1"># Error while checking the regex.</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Validation error.&#39;&quot;</span><span class="p">)</span>  <span class="c1"># Something went wrong, time to check the entered data.</span>
+            <span class="k">return</span></div>
+
+
+<span class="c1"># ##################### FUNCION CONSULTA GENERAL #########################</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The following method (read attribute) will fetch all the data from our &#39;usuarios&#39; (User) table to display it in the user interface tree.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Abmc.funcion_consulta_general">
+<a class="viewcode-back" href="../model.html#model.Abmc.funcion_consulta_general">[docs]</a>
+    <span class="k">def</span> <span class="nf">funcion_consulta_general</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+        <span class="n">registros</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">get_children</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">registros</span><span class="p">:</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="p">(</span>
+            <span class="n">fila</span>
+        <span class="p">)</span> <span class="ow">in</span> <span class="n">Usuarios</span><span class="o">.</span><span class="n">select</span><span class="p">():</span>
+            <span class="n">tree</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span>
+                <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="n">text</span><span class="o">=</span><span class="n">fila</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">values</span><span class="o">=</span><span class="p">(</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">nombre</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">apellido</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">dni</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">direccion</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">pais</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">ciudad</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">telefono</span><span class="p">,</span>
+                    <span class="n">fila</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span></div>
+
+
+    <span class="c1"># ##################### FUNCION BAJA DE USUARIOS #########################</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The &#39;funcion_baja_usuarios&#39; method (delete method) will delete the entire selected row with the cursor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Abmc.funcion_baja_usuarios">
+<a class="viewcode-back" href="../model.html#model.Abmc.funcion_baja_usuarios">[docs]</a>
+    <span class="nd">@decorador_baja</span>
+    <span class="k">def</span> <span class="nf">funcion_baja_usuarios</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_id</span><span class="p">,</span> <span class="n">tree</span><span class="p">):</span>
+        <span class="n">seleccion_usuario</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+        <span class="n">usuarios_id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">seleccion_usuario</span><span class="p">)</span>  <span class="c1"># Selection of the row</span>
+        <span class="n">borrar</span> <span class="o">=</span> <span class="n">Usuarios</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Usuarios</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">usuarios_id</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">])</span>  <span class="c1"># When selecting with the cursor, we are indicating that it should take its ID.</span>
+        <span class="n">borrar</span><span class="o">.</span><span class="n">delete_instance</span><span class="p">()</span>  <span class="c1"># We execute the deletion of the row from our table and database.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">funcion_consulta_general</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ######################## FUNCION ACTUALIZAR #############################</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The &#39;funcion_actualizar_usuarios&#39; method (update method) follows the logic of the previous method,</span>
+<span class="sd">    selecting with the cursor a user whose data we wish to update.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Abmc.funcion_actualizar_usuarios">
+<a class="viewcode-back" href="../model.html#model.Abmc.funcion_actualizar_usuarios">[docs]</a>
+    <span class="nd">@decorador_modificacion</span>
+    <span class="k">def</span> <span class="nf">funcion_actualizar_usuarios</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">nombre</span><span class="p">,</span>
+        <span class="n">apellido</span><span class="p">,</span>
+        <span class="n">dni</span><span class="p">,</span>
+        <span class="n">direccion</span><span class="p">,</span>
+        <span class="n">pais</span><span class="p">,</span>
+        <span class="n">ciudad</span><span class="p">,</span>
+        <span class="n">cp</span><span class="p">,</span>
+        <span class="n">telefono</span><span class="p">,</span>
+        <span class="n">email</span><span class="p">,</span>
+        <span class="n">tree</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">seleccion_usuario</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>  <span class="c1"># Used exactly the same way as the previous method</span>
+        <span class="n">usuarios_id</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">seleccion_usuario</span><span class="p">)</span>
+        <span class="n">actualizar</span> <span class="o">=</span> <span class="n">Usuarios</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="n">nombre</span><span class="o">=</span><span class="n">nombre</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">apellido</span><span class="o">=</span><span class="n">apellido</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">dni</span><span class="o">=</span><span class="n">dni</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">direccion</span><span class="o">=</span><span class="n">direccion</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">pais</span><span class="o">=</span><span class="n">pais</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">ciudad</span><span class="o">=</span><span class="n">ciudad</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">cp</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">telefono</span><span class="o">=</span><span class="n">telefono</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+            <span class="n">Usuarios</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">usuarios_id</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
+        <span class="p">)</span>  <span class="c1"># Update data where the cursor is positioned.</span>
+        <span class="n">actualizar</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">funcion_consulta_general</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
+        <span class="n">nombre</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">apellido</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">dni</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">direccion</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">ciudad</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">pais</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">cp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">telefono</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">email</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lucas Monzon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

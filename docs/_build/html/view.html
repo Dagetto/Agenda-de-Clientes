@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>view Module &mdash; Users Agenda 0.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="observer Module" href="observer.html" />
+    <link rel="prev" title="model Module" href="model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Users Agenda
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="controller.html">controller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">model Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">view Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initial-section-tkinter-and-model">Initial Section: Tkinter and Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tkinter-gui-modeling">Tkinter GUI Modeling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#VistaPoo"><code class="docutils literal notranslate"><span class="pre">VistaPoo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#VistaPoo.__init__"><code class="docutils literal notranslate"><span class="pre">VistaPoo.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tkinter-graphic-interface-modeling-labels-entrys-treeview">Tkinter Graphic Interface Modeling - Labels, Entrys, Treeview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tkinter-graphic-interface-modeling-buttons-and-lambda-function">Tkinter Graphic Interface Modeling - Buttons and Lambda Function</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="observer.html">observer Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Users Agenda</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">view Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/view.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="view-module">
+<h1>view Module<a class="headerlink" href="#view-module" title="Link to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The module named <em>view</em> runs the graphical interface of our app. It consists of entry fields, buttons that perform CRUD operations through lambda functions, and the treeview that allows visualizing the information.</p>
+</dd>
+</dl>
+<section id="initial-section-tkinter-and-model">
+<h2>Initial Section: Tkinter and Model<a class="headerlink" href="#initial-section-tkinter-and-model" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from Modelo import Abmc</strong> # Call the CRUD class and its respective methods.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import Menu</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import ttk</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import StringVar</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import Label</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import Entry</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import W</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import HORIZONTAL</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import VERTICAL</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import Button</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import NS</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>from tkinter import EW</strong></p>
+</div>
+</section>
+<section id="tkinter-gui-modeling">
+<h2>Tkinter GUI Modeling<a class="headerlink" href="#tkinter-gui-modeling" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please check out the Tkinter documentation.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="VistaPoo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VistaPoo</span></span><a class="headerlink" href="#VistaPoo" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="VistaPoo.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ventana_interfaz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#VistaPoo.__init__" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ventana_interfaz</strong> – It refers to the <em>main</em> and will be the variable that defines the main window of our app with all its elements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>main = ventana_interfaz</strong></p>
+<p><strong>objeto2_basedatos = Abmc()</strong> # Object that refers to the CRUD operations of the Model Module</p>
+<p><strong>main.title(“PyNotes”)</strong> # app name</p>
+<p><strong>main.config(bg=”#FFF7DD”)</strong> # app color</p>
+<p><strong>var_id = StringVar()</strong> # We specify the variables and data types they will receive. These are located behind the entries that the user sees.</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="tkinter-graphic-interface-modeling-labels-entrys-treeview">
+<h2>Tkinter Graphic Interface Modeling - Labels, Entrys, Treeview<a class="headerlink" href="#tkinter-graphic-interface-modeling-labels-entrys-treeview" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Labels</p>
+</div>
+<p><strong>titulo = Label(main, text=”Nombre”)</strong></p>
+<p><strong>titulo.grid(row=1, column=0, sticky=W)</strong> # We specify each of the Labels, their position in the interface, and the associated text</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Entrys</p>
+</div>
+<p><strong>entry_nombre = Entry(main, textvariable=self.var_nombre, width=50)</strong></p>
+<p><strong>entry_nombre.grid(row=1, column=1)</strong> # We specify the Entrys and their positions</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Treeview</p>
+</div>
+<p><strong>tree = ttk.Treeview(main)</strong> # We generate the Treeview.</p>
+<p><strong>tree[“columns”] = (“col1”,”col2”,”col3”,)</strong> # We specify how many columns the Treeview should have.</p>
+<p><strong>tree.column(“#0”, width=20, minwidth=50, anchor=W)</strong></p>
+<p><strong>tree.heading(“#0”, text=”ID”)</strong>  # We assign the size of all columns followed by the accompanying text.</p>
+<p><strong>tree.grid(column=0, row=12, columnspan=5)</strong> # We determine the total size of the Treeview.</p>
+</section>
+<section id="tkinter-graphic-interface-modeling-buttons-and-lambda-function">
+<h2>Tkinter Graphic Interface Modeling - Buttons and Lambda Function<a class="headerlink" href="#tkinter-graphic-interface-modeling-buttons-and-lambda-function" title="Link to this heading"></a></h2>
+<dl class="field-list simple">
+<dt class="field-odd">synopsis<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The App contains 4 buttons that execute the CRUD operations through lambda functions referencing the object that contains the ABMC (CRUD) class and the respective method the user wants to run.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>boton_cliente = Button(main, text=”CLIENTES”, padx=73, pady=1, command=lambda: objeto2_basedatos.funcion_consulta_general(tree),)</strong></p>
+<p><strong>Main</strong> # It refers to its position within the main window.</p>
+<p><strong>Text</strong> # It indicates the name/text of the button.</p>
+<p><strong>padx - padxy</strong> # Its location within the App.</p>
+<p><strong>Command = lambda: objeto2_basedatos.funcion_consulta_general(tree)</strong> # It applies a lambda function where it references the object containing the ABMC (CRUD) and the specific method.</p>
+</div>
+<span class="target" id="module-view"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="model.html" class="btn btn-neutral float-left" title="model Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="observer.html" class="btn btn-neutral float-right" title="observer Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lucas Monzon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
